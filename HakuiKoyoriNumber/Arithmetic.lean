@@ -13,15 +13,15 @@ def twoTower : Nat → Nat
   | n + 1 => 2 ^ twoTower n
 
 /-- Number of distinct experiment-batch identifiers. -/
-def experimentCount : Nat := twoTower 2000 + 2
+def experimentCount : Nat := Nat.succ (Nat.succ (twoTower 2000))
 
 /--
 The two added experiment tags guarantee that there are at least two
-experiment batches. Keep the tower opaque: this theorem must not evaluate it.
+experiment batches. This proof does not evaluate the tower.
 -/
 theorem experimentCount_ge_two : 2 ≤ experimentCount := by
-  change 2 ≤ twoTower 2000 + 2
-  exact Nat.le_add_left 2 _
+  unfold experimentCount
+  exact Nat.le_succ_of_le (Nat.le_succ_of_le (Nat.zero_le _))
 
 /--
 Arithmetic finishing lemma for the main comparison.
