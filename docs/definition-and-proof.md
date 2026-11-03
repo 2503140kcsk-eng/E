@@ -10,11 +10,13 @@ We follow Harvey Friedman's primary statement, “[FOM] 279: Subcubic Graph Numb
 
 Primary source: https://www.fomarchive.ugent.be/2006-April/010362.html
 
+Friedman's Theorem 2 in the same posting gives a proof-theoretic scale comparison: it states that SCG(13) exceeds the blank-tape halting time of any Turing machine whose halting can be proved in \(\Pi^1_1\text{-CA}_0\) with a description of at most \(2^{[2000]}\) symbols. It also says TREE[3] is negligible by comparison. This is the historical reason SCG(13) is used here as the benchmark; it is not a claim that SCG(13) is an absolute maximum among all definable finite integers.
+
 “Homeomorphically embeddable” is used in Friedman's graph-theoretic sense (topological-minor/subdivision embedding). We do not silently replace it with induced-subgraph embedding.
 
 For a literal combinatorial convention, represent an undirected finite multigraph as finite vertex and edge sets together with an endpoint map from each edge to an unordered pair of vertices. Distinct edge elements may have the same endpoints, and an edge may have equal endpoints (a loop). The valence of a vertex counts each incident non-loop edge once and each loop twice. “Subcubic” means every vertex has valence at most 3.
 
-A subdivision replaces each edge by a path with the same endpoints, using new internal vertices that are distinct from all other replacement paths; a loop is replaced by a cycle based at its original vertex. A graph (G) is homeomorphically embeddable into (H) exactly when some subdivision of (G) is isomorphic to a subgraph of (H). All graphs in (mathcal G_3) are taken up to isomorphism. This spells out the standard subdivision convention used in the rest of this document.
+A subdivision replaces each edge by a path with the same endpoints, using new internal vertices that are distinct from all other replacement paths; a loop is replaced by a cycle based at its original vertex. A graph $G$ is homeomorphically embeddable into $H$ exactly when some subdivision of $G$ is isomorphic to a subgraph of $H$. All graphs in $\mathcal G_3$ are taken up to isomorphism. This spells out the standard subdivision convention used in the rest of this document.
 
 ## 2. Tower parameter
 
