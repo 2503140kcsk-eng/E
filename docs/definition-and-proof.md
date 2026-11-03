@@ -12,6 +12,10 @@ Primary source: https://www.fomarchive.ugent.be/2006-April/010362.html
 
 “Homeomorphically embeddable” is used in Friedman's graph-theoretic sense (topological-minor/subdivision embedding). We do not silently replace it with induced-subgraph embedding.
 
+For a literal combinatorial convention, represent an undirected finite multigraph as finite vertex and edge sets together with an endpoint map from each edge to an unordered pair of vertices. Distinct edge elements may have the same endpoints, and an edge may have equal endpoints (a loop). The valence of a vertex counts each incident non-loop edge once and each loop twice. “Subcubic” means every vertex has valence at most 3.
+
+A subdivision replaces each edge by a path with the same endpoints, using new internal vertices that are distinct from all other replacement paths; a loop is replaced by a cycle based at its original vertex. A graph (G) is homeomorphically embeddable into (H) exactly when some subdivision of (G) is isomorphic to a subgraph of (H). All graphs in (mathcal G_3) are taken up to isomorphism. This spells out the standard subdivision convention used in the rest of this document.
+
 ## 2. Tower parameter
 
 Define the natural numbers \(T_r\) by primitive recursion:
@@ -77,7 +81,7 @@ This is a definition by a finite combinatorial maximum, not a decimal expansion 
 
 **Theorem 2 (the maximum exists).** The set of HKN-admissible sequence lengths is bounded.
 
-*Proof.* Form the rooted tree whose nodes are finite HKN-admissible prefixes, with one-step extension as the child relation. At depth \(i\), the next graph has at most \(i+13\) vertices. There are only finitely many isomorphism types of finite multigraphs on at most that many vertices with maximum valence at most 3, and there are only \(Q\) tags. Thus every node has finitely many children. If the tree had nodes at arbitrarily large depths, König's lemma for finitely branching trees would give an infinite branch, i.e. an infinite \(\preceq_Q\)-bad sequence. This contradicts Theorem 1. The tree is therefore finite, and its maximum depth is exactly HKN. \(\square\)
+*Proof.* Form the rooted tree whose nodes are finite HKN-admissible prefixes, with one-step extension as the child relation. At depth \(i\), the next graph has at most \(i+13\) vertices. For at most \(N\) vertices, the sum of valences is at most \(3N\), and every edge (including a loop) contributes 2 to that sum; hence there are at most \(\lfloor 3N/2\rfloor\) edge instances. With finitely many vertex labels and bounded edge multiplicity, only finitely many incidence tables and therefore finitely many isomorphism types exist. There are only \(Q\) tags. Thus every node has finitely many children. If the tree had nodes at arbitrarily large depths, König's lemma for finitely branching trees would give an infinite branch, i.e. an infinite \(\preceq_Q\)-bad sequence. This contradicts Theorem 1. The tree is therefore finite, and its maximum depth is exactly HKN. \(\square\)
 
 The same argument, with one tag, supplies the finiteness underlying \(\mathrm{SCG}(13)\).
 
