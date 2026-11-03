@@ -4,15 +4,29 @@ Last audited: 2026-11-03.
 
 ## Current verified boundary
 
-HakuiKoyoriNumber/Arithmetic.lean defines the 2000-step binary power tower and proves the arithmetic implication
+HakuiKoyoriNumber/Arithmetic.lean defines the recursive tower
 
 \[
-Q\cdot n\le H\quad\land\quad 1\le n\quad\Longrightarrow\quad n<H,
+T_0=1,\qquad T_{n+1}=2^{T_n}
 \]
 
-where \(Q=T_{2000}+2\).
+and the batch count \(Q=T_{2000}+2\). Its Lean theorem is the conditional arithmetic implication
 
-This file contains no sorry, admit, or user-defined axioms. A GitHub Actions Lean build and axiom audit have been configured. Until a run reports success, do not describe the Lean build as passed.
+\[
+(1\le L)\land(2\le Q)\land(Q\cdot L\le H)\Longrightarrow L<H.
+\]
+
+Here \(L\) stands for \(\mathrm{SCG}(13)\), and \(H\) stands for HKN. The Lean module does not calculate the tower: it leaves the tower as a symbolic natural-number term.
+
+**CI evidence:** GitHub Actions run [41603810346](https://github.com/2503140kcsk-eng/E/actions/runs/41603810346), commit 60ee5978518783bc5d652f2a46c243503389ad63, completed successfully on 2026-11-03. The logs show:
+
+- Lean toolchain leanprover/lean4:v4.36.0-rc2 installed successfully.
+- lake build built HakuiKoyoriNumber.Arithmetic and HakuiKoyoriNumber.
+- axiom-audit completed successfully.
+
+This run did not execute leanchecker or nanoda; the project CI is being extended to run leanchecker as well. This verifies only the arithmetic Lean module at that commit, not the graph-theoretic argument.
+
+The arithmetic source contains no sorry, admit, or user-defined axioms. This fact must not be mistaken for a completed formal proof of the entire graph theorem.
 
 ## Not yet formalized
 
@@ -23,7 +37,7 @@ The following are open obligations; none is being hidden behind an axiom:
 3. The graph-minor well-quasi-order theorem for finite subcubic graphs, either formalized in Lean or imported from a separately audited formal library. No suitable complete Lean formalization has yet been identified.
 4. The finite-tag WQO theorem and finite-branching bad-prefix tree.
 5. The construction of the \(Q\) tagged copies of a maximal SCG(13) bad sequence, including the index-shift vertex-bound proof.
-6. Definition of the actual maximum as a closed natural number inside Lean, followed by the theorem \(\mathrm{SCG}(13)<\mathrm{HakuiKoyoriNumber}\).
+6. Definition of the actual maximum as a closed natural number inside Lean, followed by the theorem SCG13 < HakuiKoyoriNumber.
 
 ## Acceptance gates
 
@@ -35,4 +49,4 @@ The following are open obligations; none is being hidden behind an axiom:
 
 ## Important distinction
 
-The mathematical argument in docs/definition-and-proof.md is a complete paper proof from the standard subcubic graph WQO theorem. The current Lean repository does **not** yet contain a kernel-checked formalization of that graph theorem or of the whole HKN construction. The project is therefore at a real intermediate milestone, not at “fully formalized.”
+The mathematical argument in docs/definition-and-proof.md is a paper proof from the standard subcubic graph well-quasi-order theorem. The current Lean repository does **not** yet contain a kernel-checked formalization of that graph theorem or of the whole HKN construction. The project is therefore at a real intermediate milestone, not at “fully formalized.”
