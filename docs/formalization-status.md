@@ -24,7 +24,7 @@ Here \(L\) stands for \(\mathrm{SCG}(13)\), and \(H\) stands for HKN. The Lean m
 - lake build built HakuiKoyoriNumber.Arithmetic and HakuiKoyoriNumber.
 - axiom-audit completed successfully.
 
-This run did not execute leanchecker or nanoda; the project CI is being extended to run leanchecker as well. This verifies only the arithmetic Lean module at that commit, not the graph-theoretic argument.
+The bundled leanchecker was attempted in runs 41604277693 and 41604429439, including with LEAN_NUM_THREADS=1, but both attempts exited with code 139. It is not counted as a successful check and has been removed from the default workflow. nanoda has not been run. The successful build and axiom-audit result verifies only the arithmetic Lean module, not the graph-theoretic argument.
 
 The arithmetic source contains no sorry, admit, or user-defined axioms. This fact must not be mistaken for a completed formal proof of the entire graph theorem.
 
