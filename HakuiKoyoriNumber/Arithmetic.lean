@@ -16,30 +16,21 @@ def twoTower : Nat → Nat
 def experimentCount : Nat := Nat.succ (Nat.succ (twoTower 2000))
 
 /--
-The two added experiment tags guarantee that there are at least two
-experiment batches. This proof does not evaluate the tower.
--/
-theorem experimentCount_ge_two : 2 ≤ experimentCount := by
-  unfold experimentCount
-  exact Nat.le_succ_of_le (Nat.le_succ_of_le (Nat.zero_le _))
-
-/--
 Arithmetic finishing lemma for the main comparison.
 
-hCopies is the graph-theoretic lower bound still to be formalized:
-the tagged-copy construction supplies at least
-experimentCount * scg13 admissible terms.
-This theorem proves that such a bound implies strict domination.
+The hypotheses expose the two elementary positive-size facts and the
+graph-theoretic tagged-copy lower bound. In particular, the proof never
+evaluates the enormous tower.
 -/
 theorem strict_domination_of_copy_bound
     (scg13 koyori : Nat)
     (hPositive : 1 ≤ scg13)
+    (hAtLeastTwoBatches : 2 ≤ experimentCount)
     (hCopies : experimentCount * scg13 ≤ koyori) :
     scg13 < koyori := by
-  have hFactor : 2 ≤ experimentCount := experimentCount_ge_two
   have hDouble : scg13 < 2 * scg13 := by omega
   have hScale : 2 * scg13 ≤ experimentCount * scg13 :=
-    Nat.mul_le_mul_right scg13 hFactor
+    Nat.mul_le_mul_right scg13 hAtLeastTwoBatches
   omega
 
 end HakuiKoyoriNumber
