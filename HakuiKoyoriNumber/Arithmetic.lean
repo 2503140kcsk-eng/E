@@ -15,9 +15,13 @@ def twoTower : Nat → Nat
 /-- Number of distinct experiment-batch identifiers. -/
 def experimentCount : Nat := twoTower 2000 + 2
 
+/--
+The two added experiment tags guarantee that there are at least two
+experiment batches. Keep the tower opaque: this theorem must not evaluate it.
+-/
 theorem experimentCount_ge_two : 2 ≤ experimentCount := by
-  dsimp [experimentCount]
-  omega
+  change 2 ≤ twoTower 2000 + 2
+  exact Nat.le_add_left 2 _
 
 /--
 Arithmetic finishing lemma for the main comparison.
@@ -36,6 +40,6 @@ theorem strict_domination_of_copy_bound
   have hDouble : scg13 < 2 * scg13 := by omega
   have hScale : 2 * scg13 ≤ experimentCount * scg13 :=
     Nat.mul_le_mul_right scg13 hFactor
-  exact lt_of_lt_of_le hDouble (le_trans hScale hCopies)
+  omega
 
 end HakuiKoyoriNumber
