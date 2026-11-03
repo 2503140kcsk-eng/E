@@ -67,7 +67,7 @@ The project is pinned to Lean v4.36.0-rc2 and currently has no external Lean pac
 lake build
 ~~~
 
-GitHub Actions runs a Lean build, leanchecker, and an axiom audit on pushes and pull requests.
+GitHub Actions runs a Lean build and an axiom audit on pushes and pull requests. The bundled leanchecker was also attempted, but crashed with exit code 139 on this runner/toolchain (even with one thread); it is not counted as successful verification.
 
 ## Project rules
 
